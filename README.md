@@ -66,7 +66,12 @@ In this final part, you'll examine more details on pods, deployments, and servic
 
 11. Create the service using `kubectl apply -f 03-service.yaml`. After it has been created (you can verify with `kubectl get services`), then get more details on the service using `kubectl describe service nginx-service`.
 
-12. Remove all the objects using `kubectl delete`.
+12. Remove all the objects with the following commands:
+
+        kubectl delete service nginx-service
+        kubectl delete deployment nginx-deployment
+    
+    Verify the objects are gone with `kubectl get deployment,rs,service,pod`.
 
 That's it!
 
