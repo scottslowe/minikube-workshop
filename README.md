@@ -48,27 +48,28 @@ In this final part, you'll examine more details on pods, deployments, and servic
 
 2. Create the pod by running `kubectl apply -f 01-pod.yaml`. Use `kubectl get pods` to verify that the pod was created.
 
-3. Use `kubectl get deployments,services` to verify that _only_ a pod was created.
+3. Use `kubectl get pods,deployments,services` to verify that _only_ a pod was created.
 
-4. Examine the `02-deployment.yaml` file in this tutorial. Remember that you can use `kubectl explain deployment` to get more details on any of the values in this file.
+4. Delete the pod using `kubectl delete pod nginx-pod`.
 
-5. Create the deployment by running `kubectl apply -f 02-deployment.yaml`.
+5. Examine the `02-deployment.yaml` file in this tutorial. Remember that you can use `kubectl explain deployment` to get more details on any of the values in this file.
 
-6. Use `kubectl get pods,deployments,services` to see that a deployment was created, which in turn created a pod.
+6. Create the deployment by running `kubectl apply -f 02-deployment.yaml`.
 
-7. Use `kubectl get deployments,replicasets,pods` to see that a replica set was created automatically when you created the deployment.
+7. Use `kubectl get pods,deployments,services` to see that a deployment was created, which in turn created a pod. Note there is no service yet.
 
-8. Use `kubectl describe` to get more details on each of the objects returned by step 7. Note the relationships between the objects (a deployment manages a replica set, which in turn manages a group of pods).
+8. Use `kubectl get deployments,replicasets,pods` to see that a replica set was created automatically when you created the deployment.
 
-9. Take a look at the `03-service.yaml` file in this tutorial. Use `kubectl explain service` to get more details on anything you don't understand.
+9. Use `kubectl describe` to get more details on each of the objects returned by step 7. Note the relationships between the objects (a deployment manages a replica set, which in turn manages a group of pods), and note the use of labels across the various objects.
 
-10. Create the service using `kubectl apply -f 03-service.yaml`. After it has been created (you can verify with `kubectl get services`), then get more details on the service using `kubectl describe service <service-name>`.
+10. Take a look at the `03-service.yaml` file in this tutorial. Use `kubectl explain service` to get more details on anything you don't understand.
 
-11. Remove all the objects using `kubectl delete`.
+11. Create the service using `kubectl apply -f 03-service.yaml`. After it has been created (you can verify with `kubectl get services`), then get more details on the service using `kubectl describe service nginx-service`.
+
+12. Remove all the objects using `kubectl delete`.
 
 That's it!
 
 [link-1]: https://github.com/kubernetes/minikube/
 [link-2]: https://virtualbox.org/
 [link-3]: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-binary-via-curl
-[link-4]: 
